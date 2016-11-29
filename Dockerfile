@@ -21,6 +21,7 @@ RUN apk update && \
     curl \
     curl-dev \
     cyrus-sasl-crammd5 \
+    cyrus-sasl-dev \
     subversion \
     subversion-dev \
     patch \
