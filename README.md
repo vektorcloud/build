@@ -1,4 +1,5 @@
 # Build
+[![Circle CI](https://circleci.com/gh/vektorcloud/build.svg?style=svg)](https://circleci.com/gh/vektorcloud/build)
 
 Build environments for VektorCloud. 
 
