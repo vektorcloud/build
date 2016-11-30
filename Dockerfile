@@ -1,7 +1,9 @@
 FROM quay.io/vektorcloud/base:latest
 
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" \
-  |tee >>/etc/apk/repositories
+  |tee >>/etc/apk/repositories && \
+  echo "@edge.testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" \
+  |tee >> /etc/apk/repositories
 
 RUN apk update && \
   apk add --no-cache make \
@@ -30,6 +32,10 @@ RUN apk update && \
     openssl \
     file \
     git \
+    boost \
+    boost-dev \
+    protobuf \
+    protobuf-dev \
+    glog@edge.testing \
+    glog-dev@edge.testing \
     maven@edge
-
-ENV JAVA_HOME=/usr/lib/jvm/default-jvm
