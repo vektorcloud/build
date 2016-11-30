@@ -29,6 +29,7 @@ RUN apk update && \
     gpgme \
     openssl \
     file \
+    git \
     maven@edge
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
