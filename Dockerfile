@@ -6,36 +6,48 @@ RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" \
   |tee >> /etc/apk/repositories
 
 RUN apk update && \
-  apk add --no-cache make \
-    g++ \
-    autoconf \
-    automake \
-    libtool \
-    python \
-    python-dev \
-    openjdk8 \
-    zlib \
-    zlib-dev \
-    fts \
-    fts-dev \
+  apk add --no-cache \
     apr \
     apr-dev \
+    autoconf \
+    automake \
+    boost \
+    boost-dev \
     curl \
     curl-dev \
     cyrus-sasl-crammd5 \
     cyrus-sasl-dev \
-    subversion \
-    subversion-dev \
-    patch \
-    linux-headers \
-    gpgme \
-    openssl \
     file \
+    fts \
+    fts-dev \
+    g++ \
     git \
-    boost \
-    boost-dev \
-    protobuf \
-    protobuf-dev \
     glog@edge.testing \
     glog-dev@edge.testing \
-    maven@edge
+    go \
+    gpgme \
+    libtool \
+    linux-headers \
+    make \
+    maven@edge \
+    openjdk8 \
+    openssl \
+    patch \
+    protobuf \
+    protobuf-dev \
+    python \
+    python-dev \
+    subversion \
+    subversion-dev \
+    zlib \
+    zlib-dev 
+
+
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+
+ENV GOPATH=/go
+ENV PATH="$PATH:$GOPATH/bin"
+
+# Go Protobuf
+RUN go get github.com/golang/protobuf/proto && \
+  go get github.com/golang/protobuf/protoc-gen-go
