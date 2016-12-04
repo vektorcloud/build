@@ -61,5 +61,6 @@ RUN mkdir -p /opt && \
   wget "https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz" -O "/tmp/sbt-$SBT_VERSION.tgz" && \
   tar xvf "/tmp/sbt-$SBT_VERSION.tgz" -C /opt && \
   mv -v /opt/sbt-* /opt/sbt && \
-  sbt about
+  sbt about && \
+  rm -v /tmp/sbt*
   
