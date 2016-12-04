@@ -49,5 +49,17 @@ ENV GOPATH=/go
 ENV PATH="$PATH:$GOPATH/bin"
 
 # Go Protobuf
-RUN go get github.com/golang/protobuf/proto && \
-  go get github.com/golang/protobuf/protoc-gen-go
+COPY vendor/protobuf /go/src/github.com/golang/protobuf
+RUN cd /go/src/github.com/golang/protobuf && \
+  make
+
+# Scala/sbt
+# Installs latest Scala version
+ENV PATH="$PATH:/opt/sbt/bin"
+ENV SBT_VERSION=0.13.13
+RUN mkdir -p /opt && \
+  wget "https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz" -O "/tmp/sbt-$SBT_VERSION.tgz" && \
+  tar xvf "/tmp/sbt-$SBT_VERSION.tgz" -C /opt && \
+  mv -v /opt/sbt-* /opt/sbt && \
+  sbt about
+  
