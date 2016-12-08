@@ -65,5 +65,6 @@ RUN mkdir -p /opt && \
   rm -v /tmp/sbt*
 
 WORKDIR /src
-
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/sh"]
