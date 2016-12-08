@@ -63,4 +63,7 @@ RUN mkdir -p /opt && \
   mv -v /opt/sbt-* /opt/sbt && \
   sbt about && \
   rm -v /tmp/sbt*
-  
+
+WORKDIR /src
+
+CMD ["/bin/sh"]
